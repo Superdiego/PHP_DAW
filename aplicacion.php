@@ -2,11 +2,11 @@
 include("objetos.php");
 $bogart = new Videoclub("Bogart");
 $cli01 = new Cliente("cliente_01");
-$cli02 = new Cliente("cliente_02)");
+$cli02 = new Cliente("cliente_02");
 $cli03 = new Cliente("cliente_03");
 $peli01 = new Pelicula("pelicula_01");
-$peli02 = new Pelicula("pelicula_02)");
-$peli03 = new Pelicula("pelicula_03)");
+$peli02 = new Pelicula("pelicula_02");
+$peli03 = new Pelicula("pelicula_03");
 $disc01 = new CDs("disco_01");
 $disc02 = new CDs("disco_02");
 $disc03 = new CDs("disco_03");
@@ -27,9 +27,12 @@ $bogart->añadir_productos($jueg01);
 $bogart->añadir_productos($jueg02);
 $bogart->añadir_productos($jueg03);
 
-$bogart->alquiler($cli01, $jueg01);
-$bogart->alquiler($cli01, $jueg03);
-$bogart->alquiler($cli02, $peli03);
-$bogart->alquiler($cli02, $disc01);
+$cli01->alquileres($jueg01);
+$cli01->alquileres($jueg03);
+$cli02->alquileres($peli03);
+$cli02->alquileres($disc01);
+
+$bogart->listar_totalAlquileres();
+$bogart->listar_clientes();
 
 ?>
