@@ -11,12 +11,19 @@ class Videoclub
     {
         $this->nombre = $nombre;
         $this->clientes = array();
-        $this->productos = array();
+        $this->articulo = array();
+        $this->alquileres = array(array());
+    }
+    public function alquilando($cliente,$producto){
+        if(in_array ($producto, $this->articulo) && in_array($cliente, $this->clientes)){
+            $cliente->alquileres($producto);
+
+        }
     }
 
     public function listar_totalAlquileres(){
         foreach($this->clientes as $nombre){
-            echo $nombre . "<br>";
+            echo "<b>$nombre</b> <br>";
 
             $nombre->listar_alquileres();
             
@@ -30,7 +37,7 @@ class Videoclub
 
     public function añadir_productos($producto)
     {
-        $this->productos =  $producto;
+        $this->articulo[]=  $producto;
     }
     public function alquiler($cliente,$producto){
         $this->clientes[$cliente]->alquileres($producto);
@@ -64,13 +71,21 @@ class Cliente
     
     public function listar_alquileres()
     {
-        foreach ($this->productos as $titulo) {
-            echo $titulo . "<br>";
+        $total = 0;
+        foreach ($this->productos as $titulo) {            
+            echo $titulo . "&nbsp; x " . $titulo->getPrecio() . "<br>";
+            $total+=$titulo->getPrecio();
         }
-        echo "<br>";
+        echo " . . . . . . .. . Total = $total euros<br>";
     }
     public function __toString(){
         return $this->nombre;
+    }
+    public function set_productos($producto){
+        $this->productos[]=$producto;
+    }
+    public function get_productos(){
+        return $this->productos;
     }
 
 }

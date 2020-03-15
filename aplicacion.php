@@ -31,6 +31,8 @@ $cli01->alquileres($jueg01);
 $cli01->alquileres($jueg03);
 $cli02->alquileres($peli03);
 $cli02->alquileres($disc01);
+$bogart->alquilando($cli03,$jueg02);
+
 
 $bogart->listar_totalAlquileres();
 $bogart->listar_clientes();
